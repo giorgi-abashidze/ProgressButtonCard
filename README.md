@@ -1,6 +1,8 @@
 # ProgressButtonCard
 Progress Button Based on CardView
 
+![](progresscardbutton.gif)
+
 ### Install (Gradle)
 Add it in your root build.gradle at the end of repositories:
 ```
@@ -77,4 +79,4 @@ ga.progress_button_card.Default button;
 
     }
 ```
-![](progresscardbutton.gif)
+
