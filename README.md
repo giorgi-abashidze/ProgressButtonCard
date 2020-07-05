@@ -24,7 +24,7 @@ dependencies {
 
 ### Properties:
 "Button" is based on a CardView, you can use every property that
-CardView have, for example cardCornerRadius, cardElevation and more.
+CardView have, for example **cardCornerRadius**, **cardElevation** and more.
 
 * **cardButtonText** provides the text of the button
 * **cardTextStyle** provides the style of the text. possible values is: **bold, normal, italic** default is normal
