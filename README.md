@@ -45,4 +45,35 @@ CardView have, for example cardCornerRadius, cardElevation, backgroundTint and m
         app:cardButtonTextColor="#ffffff"
         />
 ```
+### You can switch loading and not loading modes with functions: loading() and notLoading()
+### Example:
+```
+ga.progress_button_card.Default button;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        button = findViewById(R.id.progress_button_card);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                button.loading();
+
+                final Handler handler = new Handler();
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        button.notLoading();
+                    }
+                }, 5000);
+            }
+        });
+
+
+    }
+```
