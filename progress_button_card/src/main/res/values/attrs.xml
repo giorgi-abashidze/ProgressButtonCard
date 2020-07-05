@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="Default">
+        <attr name="cardButtonText" format="string" />
+        <attr name="cardButtonTextColor" format="string" />
+        <attr name="cardTextStyle" format="string" />
+    </declare-styleable>
+
+
+</resources>

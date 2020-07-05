@@ -1,0 +1,3 @@
+include ':progress_button_card'
+include ':app'
+rootProject.name = "ProgressButtonCardExample"
