@@ -30,7 +30,7 @@ CardView have, for example **cardCornerRadius**, **cardElevation** and more.
 * **cardTextStyle** provides the style of the text. possible values is: **bold, normal, italic** default is normal
 * **cardButtonTextColor** provides te color of the button text **! This property working only with hex color strings like: #ffffff**
 
-#### Text size is depending on button height you dont need to set the text height manually.
+#### Text size is depending on button height you dont need to set the text size manually.
 
 ### Example in XML:
 ```
