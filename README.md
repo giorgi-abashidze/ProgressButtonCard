@@ -80,3 +80,4 @@ ga.progress_button_card.Default button;
     }
 ```
 
+### ! important: Don't add onTouch listener to the button, onTouch is used inside the button to provide touch highlight.
