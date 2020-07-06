@@ -8,17 +8,50 @@
     android:orientation="vertical"
     android:gravity="center_vertical">
 
+    <TextView
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:text="Button Default "
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
     <ga.progress_button_card.Default
         app:cardBackgroundColor="@color/colorPrimary"
         android:id="@+id/progress_button_card"
         app:cardElevation="3dp"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:cardButtonText="Click me"
-        app:cardTextStyle="normal"
-        app:cardCornerRadius="10dp"
-        app:cardButtonTextColor="#ffffff"
+        app:PBC_Text="Click me"
+        app:PBC_Radius="10dp"
+        app:PBC_TextColor="#ffffff"
+        />
+    <TextView
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:text="Button Gradient"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <ga.progress_button_card.Gradient
+        android:id="@+id/progress_button_card_gradient"
+        app:cardElevation="3dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:PBC_StartColor="#CD3333"
+        app:PBC_EndColor="#FA7474"
+        app:PBC_Text="Click me"
+        app:PBC_Radius="10dp"
+        app:PBC_TextColor="#ffffff"
+        app:PBC_Gradient_Orientation="top_bottom"
         />
 
 </LinearLayout>

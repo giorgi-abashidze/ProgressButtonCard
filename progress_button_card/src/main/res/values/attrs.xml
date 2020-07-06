@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="Default">
-        <attr name="cardButtonText" format="string" />
-        <attr name="cardButtonTextColor" format="string" />
-        <attr name="cardTextStyle" format="string" />
-    </declare-styleable>
+        <attr name="PBC_Text" format="string" />
+        <attr name="PBC_TextColor" format="string" />
+        <attr name="PBC_TextStyle" format="enum" >
+                <enum name="normal" value="0"/>
+                <enum name="bold" value="1"/>
+                <enum name="italic" value="2"/>
+        </attr>
+        <attr name="PBC_Radius" format="dimension" />
+        <attr name="PBC_StartColor" format="string" />
+        <attr name="PBC_EndColor" format="string" />
 
+        <attr name="PBC_Gradient_Orientation" format="enum">
+                <enum name="top_bottom" value="0"/>
+                <enum name="left_right" value="1"/>
+                <enum name="bottomLeft_topRight" value="2"/>
+                <enum name="topLeft_bottomRight" value="3"/>
+        </attr>
 
+        <declare-styleable name="Default">
+                <attr name="PBC_Text"/>
+                <attr name="PBC_TextColor" />
+                <attr name="PBC_TextStyle" />
+                <attr name="PBC_Radius" />
+        </declare-styleable>
+
+        <declare-styleable name="Gradient">
+                <attr name="PBC_Text"/>
+                <attr name="PBC_TextColor" />
+                <attr name="PBC_TextStyle" />
+                <attr name="PBC_Radius" />
+                <attr name="PBC_StartColor" />
+                <attr name="PBC_EndColor" />
+                <attr name="PBC_Gradient_Orientation" />
+        </declare-styleable>
 </resources>

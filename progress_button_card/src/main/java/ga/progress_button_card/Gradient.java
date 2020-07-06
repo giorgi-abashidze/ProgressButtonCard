@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -21,7 +22,7 @@ import androidx.cardview.widget.CardView;
 import java.util.Arrays;
 
 
-public class Default extends CardView implements View.OnTouchListener, View.OnClickListener {
+public class Gradient extends CardView implements View.OnTouchListener, View.OnClickListener {
     boolean loading = false;
     LinearLayout linearLayout;
     TextView textView;
@@ -30,7 +31,10 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
     float PBCTextSize;
     int PBCTextStyle;
     String PBCTextColor;
+    String PBCStartColor;
+    String PBCEndColor;
     float PBCRadius;
+    int PBCGradientOrientation;
 
 
 
@@ -48,15 +52,19 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
     private static final int[] PBC_TEXT_COLOR = {R.attr.PBC_TextColor};
     private static final int[] PBC_TEXT_STYLE = {R.attr.PBC_TextStyle};
     private static final int[] PBC_RADIUS = {R.attr.PBC_Radius};
+    private static final int[] PBC_START_COLOR = {R.attr.PBC_StartColor};
+    private static final int[] PBC_END_COLOR = {R.attr.PBC_EndColor};
+    private static final int[] PBC_GRADIENT_ORIENTATION = {R.attr.PBC_Gradient_Orientation};
 
-    public Default(Context context) {
+
+    public Gradient(Context context) {
 
         super(context);
 
     }
 
 
-    public Default(Context context, @Nullable AttributeSet attrs) {
+    public Gradient(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
         this.setClickable(true);
@@ -88,7 +96,6 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
                 android.R.attr.layout_height,
         };
 
-
         //get view height, and set text size
         TypedArray ta0 = context.obtainStyledAttributes(attrs,  attrsArray, 0, 0);
 
@@ -110,20 +117,23 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
         }
 
         //get custom attributes
-        TypedArray ta = context.obtainStyledAttributes(attrs,  R.styleable.Default, 0, 0);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.Gradient, 0, 0);
         try {
 
-            PBCRadius = ta.getDimension(R.styleable.Default_PBC_Radius,0);
 
-            PBCText = ta.getString(R.styleable.Default_PBC_Text);
-            PBCTextColor = ta.getString(R.styleable.Default_PBC_TextColor);
-            PBCTextStyle = ta.getInt(R.styleable.Default_PBC_TextStyle,0);
+            PBCRadius = ta.getDimension(R.styleable.Gradient_PBC_Radius,0);
+            PBCStartColor = ta.getString(R.styleable.Gradient_PBC_StartColor);
+            PBCEndColor = ta.getString(R.styleable.Gradient_PBC_EndColor);
+            PBCGradientOrientation = ta.getInt(R.styleable.Gradient_PBC_Gradient_Orientation,0);
+            PBCText = ta.getString(R.styleable.Gradient_PBC_Text);
+            PBCTextColor = ta.getString(R.styleable.Gradient_PBC_TextColor);
+            PBCTextStyle = ta.getInt(R.styleable.Gradient_PBC_TextStyle,0);
 
             textView.setText(PBCText);
             textView.setTextSize(PBCTextSize);
 
 
-             switch (PBCTextStyle){
+                switch (PBCTextStyle){
                     case 1:
                         textView.setTypeface(textView.getTypeface(),Typeface.BOLD);
                         break;
@@ -133,47 +143,41 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
                     default:
                         textView.setTypeface(textView.getTypeface(),Typeface.NORMAL);
                         break;
-             }
-
-
-
-            //set highlight color depend on background tint
-            if(getBackgroundTintList() != null){
-                if(isWhite(getBackgroundTintList().getColorForState(new int[]{android.R.attr.state_enabled},Color.parseColor("#ffffff")))){
-                    linearLayout.setBackground(getResources().getDrawable(R.drawable.ripple_dark));
-                }
-                else{
-                    linearLayout.setBackground(getResources().getDrawable(R.drawable.ripple_light));
-
-                }
-            }
-            else{
-                if(getCardBackgroundColor() != null){
-                    if(isWhite(getCardBackgroundColor().getColorForState(new int[]{android.R.attr.state_enabled},Color.parseColor("#ffffff")))){
-                        linearLayout.setBackground(getResources().getDrawable(R.drawable.ripple_dark));
-                    }
-                    else{
-                        linearLayout.setBackground(getResources().getDrawable(R.drawable.ripple_light));
-
-                    }
-                }
-                else{
-                    linearLayout.setBackground(getResources().getDrawable(R.drawable.ripple_dark));
                 }
 
 
-            }
-
-
+            setForeground(getResources().getDrawable(R.drawable.ripple_light));
 
             textView.setTextColor(PBCTextColor == null ? Color.BLACK : Color.parseColor(PBCTextColor));
 
             progressBar.getIndeterminateDrawable()
                     .setColorFilter(PBCTextColor == null ? Color.BLACK : Color.parseColor(PBCTextColor), PorterDuff.Mode.SRC_IN );
 
+            if (PBCStartColor != null && PBCEndColor != null) {
+
+
+                GradientDrawable.Orientation orientaion = GradientDrawable.Orientation.TOP_BOTTOM;
+
+                switch (PBCGradientOrientation){
+                    case 1:
+                        orientaion = GradientDrawable.Orientation.LEFT_RIGHT;
+                        break;
+                    case 2:
+                        orientaion = GradientDrawable.Orientation.BL_TR;
+                        break;
+                    case 3:
+                        orientaion = GradientDrawable.Orientation.TL_BR;
+                }
+
+                GradientDrawable gd = new GradientDrawable(
+                        orientaion,
+                        new int[] {Color.parseColor(PBCStartColor),Color.parseColor(PBCEndColor)});
+                gd.setCornerRadius(PBCRadius);
+                linearLayout.setBackground(gd);
+            }
+
             setRadius(PBCRadius);
             refreshDrawableState();
-
         } finally {
             ta.recycle();
         }
@@ -181,7 +185,7 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
 
     }
 
-    public Default(Context context, @Nullable AttributeSet attrs, int defStyle){
+    public Gradient(Context context, @Nullable AttributeSet attrs, int defStyle){
 
         super(context, attrs, defStyle);
 
@@ -197,11 +201,15 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
     @Override
     protected int[] onCreateDrawableState(int extraSpace) {
 
-        final int[] drawableState = super.onCreateDrawableState(extraSpace + 4);
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 7);
         mergeDrawableStates(drawableState, PBC_TEXT);
         mergeDrawableStates(drawableState, PBC_TEXT_COLOR);
         mergeDrawableStates(drawableState, PBC_TEXT_STYLE);
         mergeDrawableStates(drawableState, PBC_RADIUS);
+        mergeDrawableStates(drawableState, PBC_START_COLOR);
+        mergeDrawableStates(drawableState, PBC_END_COLOR);
+        mergeDrawableStates(drawableState, PBC_GRADIENT_ORIENTATION);
+
         return drawableState;
     }
 
@@ -233,13 +241,4 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
 
     }
 
-    //if color is white or not
-    public boolean isWhite(int color){
-        double rgb = (Color.red(color) + Color.green(color) + Color.blue(color));
-        if(rgb > 700){
-            return true;
-        }else{
-            return false;
-        }
-    }
 }
