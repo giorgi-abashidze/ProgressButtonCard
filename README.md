@@ -20,8 +20,6 @@ dependencies {
 }
 ```
 
-### Make sure you have android material components installed or it will not work
-
 ### Properties:
 "Button" is based on a CardView, you can use every property that
 CardView have, for example **cardCornerRadius**, **cardElevation** and more.
