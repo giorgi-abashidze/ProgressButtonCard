@@ -20,8 +20,6 @@ dependencies {
 }
 ```
 
-### Make sure you have android material components installed or it will not work
-
 ### Properties:
 "Button" is based on a CardView, you can use every property that
 CardView have, for example **cardCornerRadius**, **cardElevation** and more.
@@ -79,5 +77,4 @@ ga.progress_button_card.Default button;
 
     }
 ```
-
-### ! important: Don't add onTouch listener to the button, onTouch is used inside the button to provide touch highlight.
+### !Important: Don't add onTouch listener to the button, onTouch listener is used inside the button to provide touch highlight
