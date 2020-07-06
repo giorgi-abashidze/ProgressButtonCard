@@ -22,7 +22,7 @@ import androidx.cardview.widget.CardView;
 import java.util.Arrays;
 
 
-public class Gradient extends CardView implements View.OnTouchListener, View.OnClickListener {
+public class Gradient extends CardView{
     boolean loading = false;
     LinearLayout linearLayout;
     TextView textView;
@@ -37,16 +37,6 @@ public class Gradient extends CardView implements View.OnTouchListener, View.OnC
     int PBCGradientOrientation;
 
 
-
-    @Override
-    public void setOnClickListener(@Nullable OnClickListener l) {
-        super.setOnClickListener(l);
-    }
-
-    @Override
-    public void setOnTouchListener(OnTouchListener l) {
-        super.setOnTouchListener(l);
-    }
 
     private static final int[] PBC_TEXT = {R.attr.PBC_Text};
     private static final int[] PBC_TEXT_COLOR = {R.attr.PBC_TextColor};
@@ -230,15 +220,5 @@ public class Gradient extends CardView implements View.OnTouchListener, View.OnC
     }
 
 
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
-    }
-
-    @Override
-    public void onClick(View v) {
-
-    }
 
 }

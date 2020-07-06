@@ -21,7 +21,7 @@ import androidx.cardview.widget.CardView;
 import java.util.Arrays;
 
 
-public class Default extends CardView implements View.OnTouchListener, View.OnClickListener {
+public class Default extends CardView {
     boolean loading = false;
     LinearLayout linearLayout;
     TextView textView;
@@ -33,16 +33,6 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
     float PBCRadius;
 
 
-
-    @Override
-    public void setOnClickListener(@Nullable OnClickListener l) {
-        super.setOnClickListener(l);
-    }
-
-    @Override
-    public void setOnTouchListener(OnTouchListener l) {
-        super.setOnTouchListener(l);
-    }
 
     private static final int[] PBC_TEXT = {R.attr.PBC_Text};
     private static final int[] PBC_TEXT_COLOR = {R.attr.PBC_TextColor};
@@ -221,17 +211,6 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
         refreshDrawableState();
     }
 
-
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
-    }
-
-    @Override
-    public void onClick(View v) {
-
-    }
 
     //if color is white or not
     public boolean isWhite(int color){
