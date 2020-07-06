@@ -210,8 +210,7 @@ public class Default extends CardView {
         this.setClickable(true);
         refreshDrawableState();
     }
-
-
+    
     //if color is white or not
     public boolean isWhite(int color){
         double rgb = (Color.red(color) + Color.green(color) + Color.blue(color));
