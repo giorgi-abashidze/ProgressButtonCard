@@ -125,13 +125,32 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
 
 
             //set highlight color depend on background tint
-            if(isWhite(getBackgroundTintList().getColorForState(new int[]{android.R.attr.state_enabled},Color.parseColor("#ffffff")))){
-                ll.setBackground(getResources().getDrawable(R.drawable.ripple_dark));
+            if(getBackgroundTintList() != null){
+                if(isWhite(getBackgroundTintList().getColorForState(new int[]{android.R.attr.state_enabled},Color.parseColor("#ffffff")))){
+                    ll.setBackground(getResources().getDrawable(R.drawable.ripple_dark));
+                }
+                else{
+                    ll.setBackground(getResources().getDrawable(R.drawable.ripple_light));
+
+                }
             }
             else{
-                ll.setBackground(getResources().getDrawable(R.drawable.ripple_light));
+                if(getCardBackgroundColor() != null){
+                    if(isWhite(getCardBackgroundColor().getColorForState(new int[]{android.R.attr.state_enabled},Color.parseColor("#ffffff")))){
+                        ll.setBackground(getResources().getDrawable(R.drawable.ripple_dark));
+                    }
+                    else{
+                        ll.setBackground(getResources().getDrawable(R.drawable.ripple_light));
+
+                    }
+                }
+                else{
+                    ll.setBackground(getResources().getDrawable(R.drawable.ripple_dark));
+                }
+
 
             }
+
 
 
             tw.setTextColor(cardTextColor == null ? Color.BLACK : Color.parseColor(cardTextColor));
