@@ -22,7 +22,7 @@ dependencies {
 
 ### Properties:
 "Button" is based on a CardView, you can use every property that
-CardView have, for example **cardCornerRadius**, **cardElevation** and more.
+CardView have, for example **cardCornerRadius**, **cardElevation**, **cardBackgroundColor**.
 
 * **cardButtonText** provides the text of the button
 * **cardTextStyle** provides the style of the text. possible values is: **bold, normal, italic** default is normal
@@ -38,7 +38,7 @@ CardView have, for example **cardCornerRadius**, **cardElevation** and more.
         android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:backgroundTint="@android:color/holo_blue_light"
+        app:cardBackgroundColor="@android:color/holo_blue_light"
         app:cardButtonText="Click me"
         app:cardTextStyle="normal"
         app:cardCornerRadius="10dp"
