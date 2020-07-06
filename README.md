@@ -16,7 +16,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-	implementation 'com.github.giorgi-abashidze:ProgressButtonCard:1.2'
+	implementation 'com.github.giorgi-abashidze:ProgressButtonCard:1.3'
 }
 ```
 
