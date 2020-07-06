@@ -5,8 +5,10 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.provider.CalendarContract;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,9 +32,15 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
     TextView tw;
     ProgressBar pb;
 
+
     @Override
     public void setOnClickListener(@Nullable OnClickListener l) {
         super.setOnClickListener(l);
+    }
+
+    @Override
+    public void setOnTouchListener(OnTouchListener l) {
+        super.setOnTouchListener(l);
     }
 
     private static final int[] CARD_TEXT = {R.attr.cardButtonText};
@@ -48,9 +56,6 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
 
     public Default(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-
-
-        setOnTouchListener(this);
 
         this.setClickable(true);
 
@@ -96,7 +101,7 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
             pb.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
             tw.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
 
-            cardTextSize = (dp / 2) - (dp / 8);
+            cardTextSize = (dp / 2) - (dp / 9);
             cardText = ta.getString(1);
             cardTextColor = ta.getString(2);
             textStyle = ta.getString(3);
@@ -119,7 +124,18 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
             }
 
 
+            //set highlight color depend on background tint
+            if(isWhite(getBackgroundTintList().getColorForState(new int[]{android.R.attr.state_enabled},Color.parseColor("#ffffff")))){
+                ll.setBackground(getResources().getDrawable(R.drawable.ripple_dark));
+            }
+            else{
+                ll.setBackground(getResources().getDrawable(R.drawable.ripple_light));
+
+            }
+
+
             tw.setTextColor(cardTextColor == null ? Color.BLACK : Color.parseColor(cardTextColor));
+
             pb.getIndeterminateDrawable()
                     .setColorFilter(cardTextColor == null ? Color.BLACK : Color.parseColor(cardTextColor), PorterDuff.Mode.SRC_IN );
 
@@ -162,7 +178,6 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
     }
 
     public void notLoading(){
-
         loading = false;
         this.tw.setVisibility(VISIBLE);
         this.pb.setVisibility(GONE);
@@ -174,33 +189,21 @@ public class Default extends CardView implements View.OnTouchListener, View.OnCl
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        if(!loading){
-
-
-            int action = MotionEventCompat.getActionMasked(event);
-
-            if(action == MotionEvent.ACTION_DOWN) {
-                v.setAlpha(1.0f);
-                v.animate()
-                        .alpha(0.5f)
-                        .setDuration(500)
-                        .setListener(null);
-            }
-            else if(action == MotionEvent.ACTION_UP){
-                v.setAlpha(0.5f);
-                v.animate()
-                        .alpha(1.0f)
-                        .setDuration(500)
-                        .setListener(null);
-            }
-
-        }
-
         return false;
     }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    //if color is white or not
+    public boolean isWhite(int color){
+        double rgb = (Color.red(color) + Color.green(color) + Color.blue(color));
+        if(rgb > 700){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
