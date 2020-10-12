@@ -96,9 +96,9 @@ public class Gradient extends CardView{
             DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
 
             int dp = Math.round(tmpSize / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-
-            progressBar.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
-            textView.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
+            int paddingNum = displayMetrics.xdpi <= 160 ? 5 : displayMetrics.xdpi > 160 && displayMetrics.xdpi <= 213 ? 4 : 3;
+           progressBar.setPadding(0,dp / paddingNum,0,dp / paddingNum);
+           // textView.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
 
             PBCTextSize = (dp / 2) - (dp / 9);
 
@@ -178,6 +178,7 @@ public class Gradient extends CardView{
     public Gradient(Context context, @Nullable AttributeSet attrs, int defStyle){
 
         super(context, attrs, defStyle);
+
 
     }
 

@@ -1,25 +1,26 @@
-package ga.progress_button_card;
 
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.Typeface;
-import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.view.Gravity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+        package ga.progress_button_card;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
+        import android.content.Context;
+        import android.content.res.TypedArray;
+        import android.graphics.Color;
+        import android.graphics.PorterDuff;
+        import android.graphics.Typeface;
+        import android.util.AttributeSet;
+        import android.util.DisplayMetrics;
+        import android.view.Gravity;
+        import android.view.MotionEvent;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.LinearLayout;
+        import android.widget.ProgressBar;
+        import android.widget.TextView;
 
-import java.util.Arrays;
+        import androidx.annotation.NonNull;
+        import androidx.annotation.Nullable;
+        import androidx.cardview.widget.CardView;
+
+        import java.util.Arrays;
 
 
 public class Default extends CardView {
@@ -91,8 +92,10 @@ public class Default extends CardView {
 
             int dp = Math.round(tmpSize / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
 
-            progressBar.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
-            textView.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
+            int paddingNum = displayMetrics.xdpi <= 160 ? 5 : displayMetrics.xdpi > 160 && displayMetrics.xdpi <= 213 ? 4 : 3;
+
+             progressBar.setPadding(0,dp / paddingNum,0,dp / paddingNum);
+            //textView.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
 
             PBCTextSize = (dp / 2) - (dp / 9);
 
@@ -114,17 +117,17 @@ public class Default extends CardView {
             textView.setTextSize(PBCTextSize);
 
 
-             switch (PBCTextStyle){
-                    case 1:
-                        textView.setTypeface(textView.getTypeface(),Typeface.BOLD);
-                        break;
-                    case 2:
-                        textView.setTypeface(textView.getTypeface(),Typeface.ITALIC);
-                        break;
-                    default:
-                        textView.setTypeface(textView.getTypeface(),Typeface.NORMAL);
-                        break;
-             }
+            switch (PBCTextStyle){
+                case 1:
+                    textView.setTypeface(textView.getTypeface(),Typeface.BOLD);
+                    break;
+                case 2:
+                    textView.setTypeface(textView.getTypeface(),Typeface.ITALIC);
+                    break;
+                default:
+                    textView.setTypeface(textView.getTypeface(),Typeface.NORMAL);
+                    break;
+            }
 
 
 
@@ -230,3 +233,4 @@ public class Default extends CardView {
         }
     }
 }
+
