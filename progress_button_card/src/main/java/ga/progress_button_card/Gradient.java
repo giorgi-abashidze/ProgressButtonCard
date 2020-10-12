@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -18,6 +20,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
+import androidx.databinding.InverseBindingListener;
 
 import java.util.Arrays;
 
@@ -36,8 +41,6 @@ public class Gradient extends CardView{
     float PBCRadius;
     int PBCGradientOrientation;
 
-
-
     private static final int[] PBC_TEXT = {R.attr.PBC_Text};
     private static final int[] PBC_TEXT_COLOR = {R.attr.PBC_TextColor};
     private static final int[] PBC_TEXT_STYLE = {R.attr.PBC_TextStyle};
@@ -51,6 +54,46 @@ public class Gradient extends CardView{
 
         super(context);
 
+    }
+
+    public String getPBCText() {
+        return PBCText;
+    }
+
+    public void setPBCText(String PBCText) {
+        this.PBCText = PBCText;
+    }
+
+    @BindingAdapter("PBC_Text")
+    public static void setText(Gradient view, String value) {
+        view.textView.setText(value);
+    }
+
+    @InverseBindingAdapter(attribute = "PBC_Text")
+    public static CharSequence getText(Gradient view) {
+        return view.textView.getText();
+    }
+
+    @BindingAdapter(value = "textAttrChanged")
+    public static void setListener(Gradient btn, final InverseBindingListener listener) {
+        if (listener != null) {
+            btn.textView.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    listener.onChange();
+                }
+            });
+        }
     }
 
 

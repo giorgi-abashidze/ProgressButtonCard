@@ -1,20 +1,25 @@
 package ga.progressbuttoncardexample;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import ga.progressbuttoncardexample.databinding.ActivityMainBinding;
+
+
 public class MainActivity extends AppCompatActivity {
 
     ga.progress_button_card.Default buttonDefault;
     ga.progress_button_card.Gradient buttonGradient;
+    ActivityMainBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_main);
 
         buttonDefault = findViewById(R.id.progress_button_card);
         buttonGradient = findViewById(R.id.progress_button_card_gradient);
@@ -54,7 +59,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        final Handler handler = new Handler();
 
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mBinding.setDefaultButtonText("Binded text !");
+            }
+        }, 3000);
 
     }
 

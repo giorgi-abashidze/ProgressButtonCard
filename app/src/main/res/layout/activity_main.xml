@@ -1,57 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical"
-    android:gravity="center_vertical">
 
-    <TextView
-        android:textColor="@android:color/black"
-        android:textSize="17sp"
-        android:gravity="center"
-        android:text="Button Default "
-        android:layout_margin="5dp"
+<layout>
+
+    <data>
+        <variable
+            name="defaultButtonText"
+            type="String" />
+
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-    </TextView>
-    <ga.progress_button_card.Default
-        app:cardBackgroundColor="@color/colorPrimary"
-        android:id="@+id/progress_button_card"
-        app:cardElevation="3dp"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:PBC_Text="Click me"
-        app:PBC_Radius="10dp"
-        app:PBC_TextColor="#ffffff"
-        />
-    <TextView
-        android:textColor="@android:color/black"
-        android:textSize="17sp"
-        android:gravity="center"
-        android:text="Button Gradient"
-        android:layout_margin="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:text="Button Default "
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </TextView>
+        </TextView>
+        <ga.progress_button_card.Default
+            app:cardBackgroundColor="@color/colorPrimary"
+            android:id="@+id/progress_button_card"
+            app:cardElevation="3dp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:PBC_Text="@{defaultButtonText}"
+            app:PBC_Radius="10dp"
+            app:PBC_TextColor="#ffffff"
+            />
+        <TextView
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:text="Button Gradient"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <ga.progress_button_card.Gradient
-        android:id="@+id/progress_button_card_gradient"
-        app:cardElevation="3dp"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:PBC_StartColor="#CD3333"
-        app:PBC_EndColor="#FA7474"
-        app:PBC_Text="Click me"
-        app:PBC_Radius="10dp"
-        app:PBC_TextColor="#ffffff"
-        app:PBC_Gradient_Orientation="top_bottom"
-        />
+        </TextView>
 
-</LinearLayout>
+        <ga.progress_button_card.Gradient
+            android:id="@+id/progress_button_card_gradient"
+            app:cardElevation="3dp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:PBC_StartColor="#CD3333"
+            app:PBC_EndColor="#FA7474"
+            app:PBC_Text="@{context.getString(ga.progressbuttoncardexample.R.string.binding_test)}"
+            app:PBC_Radius="10dp"
+            app:PBC_TextColor="#ffffff"
+            app:PBC_Gradient_Orientation="top_bottom"
+            />
+
+    </LinearLayout>
+</layout>
