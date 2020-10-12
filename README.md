@@ -70,6 +70,7 @@ CardView have, for example **cardElevation**, **cardBackgroundColor**.
 
 ### DataBinding
 Databinding is only supported for field PBC_Text. 
+
 example: app:PBC_Text"@{someValue}"
 
 
