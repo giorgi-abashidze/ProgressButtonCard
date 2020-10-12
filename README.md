@@ -16,7 +16,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-	implementation 'com.github.giorgi-abashidze:ProgressButtonCard:1.4'
+	implementation 'com.github.giorgi-abashidze:ProgressButtonCard:1.5'
 }
 ```
 
@@ -67,6 +67,12 @@ CardView have, for example **cardElevation**, **cardBackgroundColor**.
         app:PBC_Gradient_Orientation="top_bottom"
         />
 ```
+
+### DataBinding
+Databinding is only supported for field PBC_Text. 
+example: app:PBC_Text"@{someValue}"
+
+
 
 ### You can switch loading and not loading modes with functions: loading() and notLoading()
 ### Example:
