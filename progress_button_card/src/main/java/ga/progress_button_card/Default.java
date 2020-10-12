@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
@@ -174,6 +175,14 @@ public class Default extends CardView {
     public Default(Context context, @Nullable AttributeSet attrs, int defStyle){
 
         super(context, attrs, defStyle);
+
+    }
+
+    @Override
+    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+
+        refreshDrawableState();
 
     }
 
