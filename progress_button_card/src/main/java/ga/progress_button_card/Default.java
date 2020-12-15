@@ -140,8 +140,8 @@ public class Default extends CardView {
 
             textView.setText(PBCText);
             textView.setTextSize(PBCTextSize);
-            progressBar.setPadding(PBCTextSize/4);
-            textView.setPadding(PBCTextSize/4);
+            progressBar.setPadding((int)PBCTextSize/4,(int)PBCTextSize/4,(int)PBCTextSize/4,(int)PBCTextSize/4);
+            textView.setPadding((int)PBCTextSize/4,(int)PBCTextSize/4,(int)PBCTextSize/4,(int)PBCTextSize/4);
 
             switch (PBCTextStyle){
                 case 1:
