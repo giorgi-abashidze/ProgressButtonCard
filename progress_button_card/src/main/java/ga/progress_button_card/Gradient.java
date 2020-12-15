@@ -44,6 +44,7 @@ public class Gradient extends CardView{
     private static final int[] PBC_TEXT = {R.attr.PBC_Text};
     private static final int[] PBC_TEXT_COLOR = {R.attr.PBC_TextColor};
     private static final int[] PBC_TEXT_STYLE = {R.attr.PBC_TextStyle};
+    private static final int[] PBC_TEXT_SIZE = {R.attr.PBC_TextSize};
     private static final int[] PBC_RADIUS = {R.attr.PBC_Radius};
     private static final int[] PBC_START_COLOR = {R.attr.PBC_StartColor};
     private static final int[] PBC_END_COLOR = {R.attr.PBC_EndColor};
@@ -140,10 +141,10 @@ public class Gradient extends CardView{
 
             int dp = Math.round(tmpSize / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
             int paddingNum = displayMetrics.xdpi <= 160 ? 4 : displayMetrics.xdpi > 160 && displayMetrics.xdpi <= 213 ? 3 : 2;
-           progressBar.setPadding(0,dp / paddingNum,0,dp / paddingNum);
-           // textView.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
+           progressBar.setPadding(0,dp / 2,0,dp / 2);
+           textView.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
 
-            PBCTextSize = (dp / 2) - (dp / 6);
+
 
         }finally {
             ta0.recycle();
@@ -160,10 +161,12 @@ public class Gradient extends CardView{
             PBCGradientOrientation = ta.getInt(R.styleable.Gradient_PBC_Gradient_Orientation,0);
             PBCText = ta.getString(R.styleable.Gradient_PBC_Text);
             PBCTextColor = ta.getString(R.styleable.Gradient_PBC_TextColor);
+            PBCTextSize = ta.getInt(R.styleable.Default_PBC_TextSize,16);
             PBCTextStyle = ta.getInt(R.styleable.Gradient_PBC_TextStyle,0);
 
             textView.setText(PBCText);
             textView.setTextSize(PBCTextSize);
+
 
 
                 switch (PBCTextStyle){
@@ -235,11 +238,12 @@ public class Gradient extends CardView{
     @Override
     protected int[] onCreateDrawableState(int extraSpace) {
 
-        final int[] drawableState = super.onCreateDrawableState(extraSpace + 7);
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 8);
         mergeDrawableStates(drawableState, PBC_TEXT);
         mergeDrawableStates(drawableState, PBC_TEXT_COLOR);
         mergeDrawableStates(drawableState, PBC_TEXT_STYLE);
         mergeDrawableStates(drawableState, PBC_RADIUS);
+        mergeDrawableStates(drawableState, PBC_TEXT_SIZE);
         mergeDrawableStates(drawableState, PBC_START_COLOR);
         mergeDrawableStates(drawableState, PBC_END_COLOR);
         mergeDrawableStates(drawableState, PBC_GRADIENT_ORIENTATION);

@@ -154,7 +154,7 @@ public class Default extends CardView {
             PBCText = ta.getString(R.styleable.Default_PBC_Text);
             PBCTextColor = ta.getString(R.styleable.Default_PBC_TextColor);
             PBCTextStyle = ta.getInt(R.styleable.Default_PBC_TextStyle,0);
-            PBCTextSize = ta.getInt(R.styleable.Default_PBC_TextSize,5);
+            PBCTextSize = ta.getInt(R.styleable.Default_PBC_TextSize,16);
 
             textView.setText(PBCText);
             textView.setTextSize(PBCTextSize);
