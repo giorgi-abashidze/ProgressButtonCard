@@ -38,6 +38,7 @@
             android:layout_height="50dp"
             app:PBC_Text="@{defaultButtonText}"
             app:PBC_Radius="10dp"
+            app:PBC_TextSize="16"
             app:PBC_TextColor="#ffffff"
             />
         <TextView

@@ -11,6 +11,7 @@
         <attr name="PBC_Radius" format="dimension" />
         <attr name="PBC_StartColor" format="string" />
         <attr name="PBC_EndColor" format="string" />
+        <attr name="PBC_TextSize" format="integer" />
 
         <attr name="PBC_Gradient_Orientation" format="enum">
                 <enum name="top_bottom" value="0"/>
@@ -23,6 +24,7 @@
                 <attr name="PBC_Text"/>
                 <attr name="PBC_TextColor" />
                 <attr name="PBC_TextStyle" />
+                <attr name="PBC_TextSize" />
                 <attr name="PBC_Radius" />
         </declare-styleable>
 
@@ -32,6 +34,7 @@
                 <attr name="PBC_TextStyle" />
                 <attr name="PBC_Radius" />
                 <attr name="PBC_StartColor" />
+                <attr name="PBC_TextSize" />
                 <attr name="PBC_EndColor" />
                 <attr name="PBC_Gradient_Orientation" />
         </declare-styleable>

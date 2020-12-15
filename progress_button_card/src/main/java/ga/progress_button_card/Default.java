@@ -51,6 +51,7 @@ public class Default extends CardView {
     private static final int[] PBC_TEXT_COLOR = {R.attr.PBC_TextColor};
     private static final int[] PBC_TEXT_STYLE = {R.attr.PBC_TextStyle};
     private static final int[] PBC_RADIUS = {R.attr.PBC_Radius};
+    private static final int[] PBC_TEXT_SIZE = {R.attr.PBC_TextSize};
 
     public Default(Context context) {
 
@@ -137,10 +138,8 @@ public class Default extends CardView {
 
             int paddingNum = displayMetrics.xdpi <= 160 ? 4 : displayMetrics.xdpi > 160 && displayMetrics.xdpi <= 213 ? 3 : 2;
 
-             progressBar.setPadding(0,dp / paddingNum,0,dp / paddingNum);
-            //textView.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
-
-            PBCTextSize = (dp / 2) - (dp / 6);
+             progressBar.setPadding(0,dp / 2,0,dp / 2);
+             textView.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
 
         }finally {
             ta0.recycle();
@@ -149,12 +148,13 @@ public class Default extends CardView {
         //get custom attributes
         TypedArray ta = context.obtainStyledAttributes(attrs,  R.styleable.Default, 0, 0);
         try {
-
+            DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
             PBCRadius = ta.getDimension(R.styleable.Default_PBC_Radius,0);
 
             PBCText = ta.getString(R.styleable.Default_PBC_Text);
             PBCTextColor = ta.getString(R.styleable.Default_PBC_TextColor);
             PBCTextStyle = ta.getInt(R.styleable.Default_PBC_TextStyle,0);
+            PBCTextSize = ta.getInt(R.styleable.Default_PBC_TextSize,5);
 
             textView.setText(PBCText);
             textView.setTextSize(PBCTextSize);
@@ -242,10 +242,11 @@ public class Default extends CardView {
     @Override
     protected int[] onCreateDrawableState(int extraSpace) {
 
-        final int[] drawableState = super.onCreateDrawableState(extraSpace + 4);
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 5);
         mergeDrawableStates(drawableState, PBC_TEXT);
         mergeDrawableStates(drawableState, PBC_TEXT_COLOR);
         mergeDrawableStates(drawableState, PBC_TEXT_STYLE);
+        mergeDrawableStates(drawableState, PBC_TEXT_SIZE);
         mergeDrawableStates(drawableState, PBC_RADIUS);
         return drawableState;
     }
