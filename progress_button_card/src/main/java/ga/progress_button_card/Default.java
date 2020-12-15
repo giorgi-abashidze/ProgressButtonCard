@@ -125,25 +125,7 @@ public class Default extends CardView {
         };
 
 
-        //get view height, and set text size
-        TypedArray ta0 = context.obtainStyledAttributes(attrs,  attrsArray, 0, 0);
 
-        try {
-
-            int tmpSize = ta0.getLayoutDimension(0, 1);
-
-            DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
-
-            int dp = Math.round(tmpSize / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-
-            int paddingNum = displayMetrics.xdpi <= 160 ? 4 : displayMetrics.xdpi > 160 && displayMetrics.xdpi <= 213 ? 3 : 2;
-
-             progressBar.setPadding(0,dp / 2,0,dp / 2);
-             textView.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
-
-        }finally {
-            ta0.recycle();
-        }
 
         //get custom attributes
         TypedArray ta = context.obtainStyledAttributes(attrs,  R.styleable.Default, 0, 0);
@@ -158,7 +140,8 @@ public class Default extends CardView {
 
             textView.setText(PBCText);
             textView.setTextSize(PBCTextSize);
-
+            progressBar.setPadding(PBCTextSize/4);
+            textView.setPadding(PBCTextSize/4);
 
             switch (PBCTextStyle){
                 case 1:

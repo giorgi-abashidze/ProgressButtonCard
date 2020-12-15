@@ -130,25 +130,6 @@ public class Gradient extends CardView{
                 android.R.attr.layout_height,
         };
 
-        //get view height, and set text size
-        TypedArray ta0 = context.obtainStyledAttributes(attrs,  attrsArray, 0, 0);
-
-        try {
-
-            int tmpSize = ta0.getLayoutDimension(0, 1);
-
-            DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
-
-            int dp = Math.round(tmpSize / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-            int paddingNum = displayMetrics.xdpi <= 160 ? 4 : displayMetrics.xdpi > 160 && displayMetrics.xdpi <= 213 ? 3 : 2;
-           progressBar.setPadding(0,dp / 2,0,dp / 2);
-           textView.setPadding(dp / 2,dp / 2,dp / 2,dp / 2);
-
-
-
-        }finally {
-            ta0.recycle();
-        }
 
         //get custom attributes
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.Gradient, 0, 0);
@@ -161,12 +142,13 @@ public class Gradient extends CardView{
             PBCGradientOrientation = ta.getInt(R.styleable.Gradient_PBC_Gradient_Orientation,0);
             PBCText = ta.getString(R.styleable.Gradient_PBC_Text);
             PBCTextColor = ta.getString(R.styleable.Gradient_PBC_TextColor);
-            PBCTextSize = ta.getInt(R.styleable.Default_PBC_TextSize,16);
+            PBCTextSize = ta.getInt(R.styleable.Gradient_PBC_TextSize,16);
             PBCTextStyle = ta.getInt(R.styleable.Gradient_PBC_TextStyle,0);
 
             textView.setText(PBCText);
             textView.setTextSize(PBCTextSize);
-
+            progressBar.setPadding(PBCTextSize/4);
+            textView.setPadding(PBCTextSize/4);
 
 
                 switch (PBCTextStyle){

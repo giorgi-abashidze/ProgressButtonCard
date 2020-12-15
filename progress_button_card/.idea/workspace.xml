@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b26073d-22f8-4a84-823b-7a3096ab6b44" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ga/progress_button_card/Default.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ga/progress_button_card/Default.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ga/progress_button_card/Gradient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ga/progress_button_card/Gradient.java" afterDir="false" />
     </list>
