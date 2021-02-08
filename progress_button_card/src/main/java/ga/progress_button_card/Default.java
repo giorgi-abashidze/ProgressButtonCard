@@ -14,6 +14,7 @@
         import android.view.MotionEvent;
         import android.view.View;
         import android.view.ViewGroup;
+        import android.widget.FrameLayout;
         import android.widget.LinearLayout;
         import android.widget.ProgressBar;
         import android.widget.TextView;
@@ -140,7 +141,12 @@ public class Default extends CardView {
 
             textView.setText(PBCText);
             textView.setTextSize(PBCTextSize);
-            progressBar.setPadding((int)PBCTextSize/4,(int)PBCTextSize/4,(int)PBCTextSize/4,(int)PBCTextSize/4);
+
+            Float scale  = getResources().getDisplayMetrics().density;
+            LinearLayout.LayoutParams pbLayoutParams = new LinearLayout.LayoutParams((int)(PBCTextSize+(PBCTextSize*(scale == 1.0?1:scale*1.5))), ViewGroup.LayoutParams.MATCH_PARENT);
+            pbLayoutParams.gravity = Gravity.CENTER_VERTICAL | Gravity.CENTER;
+            progressBar.setLayoutParams(pbLayoutParams);
+
             textView.setPadding((int)PBCTextSize/4,(int)PBCTextSize/4,(int)PBCTextSize/4,(int)PBCTextSize/4);
 
             switch (PBCTextStyle){
